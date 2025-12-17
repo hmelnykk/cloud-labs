@@ -141,12 +141,12 @@ def _init_swagger(app: Flask) -> None:
     })
     
     # Student models
-    student_model = api.model('Student', {
-        'id': fields.Integer(description='Student ID'),
-        'name': fields.String(required=True, description='Student name'),
-        'group': fields.String(description='Student group'),
-        'email': fields.String(description='Student email')
-    })
+    # student_model = api.model('Student', {
+    #     'id': fields.Integer(description='Student ID'),
+    #     'name': fields.String(required=True, description='Student name'),
+    #     'group': fields.String(description='Student group'),
+    #     'email': fields.String(description='Student email')
+    # })
     
     # Master models
     master_model = api.model('Master', {
@@ -316,13 +316,13 @@ def _init_swagger(app: Flask) -> None:
         5: {'id': 5, 'name': 'Network Equipment', 'description': 'Routers, switches, and networking devices'}
     }
     
-    students_db = {
-        1: {'id': 1, 'name': 'John Smith', 'group': 'CS-21-1', 'email': 'john.smith@university.edu'},
-        2: {'id': 2, 'name': 'Sarah Johnson', 'group': 'CS-21-2', 'email': 'sarah.johnson@university.edu'},
-        3: {'id': 3, 'name': 'Mike Brown', 'group': 'IT-21-1', 'email': 'mike.brown@university.edu'},
-        4: {'id': 4, 'name': 'Emily Davis', 'group': 'CS-22-1', 'email': 'emily.davis@university.edu'},
-        5: {'id': 5, 'name': 'David Wilson', 'group': 'IT-22-1', 'email': 'david.wilson@university.edu'}
-    }
+    # students_db = {
+    #     1: {'id': 1, 'name': 'John Smith', 'group': 'CS-21-1', 'email': 'john.smith@university.edu'},
+    #     2: {'id': 2, 'name': 'Sarah Johnson', 'group': 'CS-21-2', 'email': 'sarah.johnson@university.edu'},
+    #     3: {'id': 3, 'name': 'Mike Brown', 'group': 'IT-21-1', 'email': 'mike.brown@university.edu'},
+    #     4: {'id': 4, 'name': 'Emily Davis', 'group': 'CS-22-1', 'email': 'emily.davis@university.edu'},
+    #     5: {'id': 5, 'name': 'David Wilson', 'group': 'IT-22-1', 'email': 'david.wilson@university.edu'}
+    # }
     
     masters_db = {
         1: {'id': 1, 'name': 'Dr. Anderson', 'specialization': 'Computer Science', 'email': 'anderson@university.edu'},
@@ -569,29 +569,29 @@ def _init_swagger(app: Flask) -> None:
             return eq_type, 201
     
     # Students endpoints
-    @ns_students.route('/')
-    class StudentsList(Resource):
-        @api.marshal_list_with(student_model)
-        def get(self):
-            """Get all students"""
-            return list(students_db.values())
+    # @ns_students.route('/')
+    # class StudentsList(Resource):
+    #     @api.marshal_list_with(student_model)
+    #     def get(self):
+    #         """Get all students"""
+    #         return list(students_db.values())
         
-        @api.doc(security='Bearer')
-        @token_required
-        @api.expect(student_model)
-        @api.marshal_with(student_model)
-        def post(self):
-            """Create new student"""
-            data = request.get_json()
-            student_id = max(students_db.keys()) + 1 if students_db else 1
-            student = {
-                'id': student_id,
-                'name': data.get('name'),
-                'group': data.get('group'),
-                'email': data.get('email')
-            }
-            students_db[student_id] = student
-            return student, 201
+    #     @api.doc(security='Bearer')
+    #     @token_required
+    #     @api.expect(student_model)
+    #     @api.marshal_with(student_model)
+    #     def post(self):
+    #         """Create new student"""
+    #         data = request.get_json()
+    #         student_id = max(students_db.keys()) + 1 if students_db else 1
+    #         student = {
+    #             'id': student_id,
+    #             'name': data.get('name'),
+    #             'group': data.get('group'),
+    #             'email': data.get('email')
+    #         }
+    #         students_db[student_id] = student
+    #         return student, 201
     
     # Masters endpoints
     @ns_masters.route('/')
