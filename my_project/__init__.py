@@ -54,8 +54,10 @@ def create_app(app_config: Dict[str, Any], additional_config: Dict[str, Any]) ->
 
     CORS(app)
     _init_db(app)
+    print("DB initialized")
     register_routes(app)
     _init_swagger(app)
+    print("Swagger initialized")
 
     return app
 
