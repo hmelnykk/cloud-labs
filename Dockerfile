@@ -13,7 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-EXPOSE 3306
+EXPOSE 8080
 
 ENV FLASK_ENV=production
 ENV PYTHONPATH=/app
