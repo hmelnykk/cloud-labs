@@ -12,7 +12,7 @@ import pymysql
 pymysql.install_as_MySQLdb()
 from my_project import create_app
 
-DEVELOPMENT_PORT = 5000
+DEVELOPMENT_PORT = 8080
 PRODUCTION_PORT = 8080
 HOST = "0.0.0.0"
 DEVELOPMENT = "development"

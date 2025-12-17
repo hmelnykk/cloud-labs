@@ -1,6 +1,6 @@
 services:
   web:
-    image: maikmykhailo/lab1:latest
+    image: studenthmel/cloud-lab:latest
     ports:
       - "80:8080"
     restart: always
