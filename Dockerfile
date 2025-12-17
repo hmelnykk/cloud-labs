@@ -18,4 +18,4 @@ EXPOSE 8080
 ENV FLASK_ENV=production
 ENV PYTHONPATH=/app
 
-CMD ["python", "app.py"]
+# CMD ["python", "app.py"]
